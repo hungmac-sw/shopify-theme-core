@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MergeJsonWebpackPlugin = require('merge-jsons-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -10,6 +11,20 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
+    }),
+    new MergeJsonWebpackPlugin({
+      output: {
+        groupBy: [
+          {
+            pattern: './resources/config/settings_data.json',
+            fileName: '../config/settings_data.json',
+          },
+          {
+            pattern: './resources/config/settings_schema.json',
+            fileName: '../config/settings_schema.json',
+          },
+        ],
+      },
     }),
   ],
 
