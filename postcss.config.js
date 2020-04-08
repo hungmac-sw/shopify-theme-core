@@ -1,6 +1,6 @@
-const plugins = [
-  require('autoprefixer'),
-];
+const plugins = [];
+
+plugins.push(require('autoprefixer'));
 
 if (process.env.NODE_ENV === 'production') {
   plugins.push(require('@fullhuman/postcss-purgecss')({
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
   plugins.push(require('cssnano'));
 
   plugins.push(require('postcss-discard-comments')({
-    removeAll: true,
+    removeAll: false,
   }));
 }
 

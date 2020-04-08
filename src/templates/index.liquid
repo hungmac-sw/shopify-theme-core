@@ -1,10 +1,34 @@
-{% for product in collections.frontpage.products limit:4 %}
-  <div>
-    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-    {{ product.price | money }}
-    {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-    <a href="{{ product.url | within: collection }}">
-      <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-    </a>
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1>Shopify demo header</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+    </div>
+  </section>
+<div class="products py-5 bg-light">
+    <div class="container">
+    <div class="row">
+      {% for product in collections.frontpage.products limit:4 %}
+      
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <a href="{{ product.url | within: collection }}">
+                <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" style="width: 100%; height=225">
+              </a>
+              <div class="card-body">
+                <p class="card-text">{{ product.title }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">{{ product.price | money }}</button>
+                    {% unless product.available %}
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><strong>sold out</strong></button>
+                    {% endunless %}
+                  </div>
+                  <button type="button" class="btn btn-sm btn-primary">Add to card</button>
+                </div>
+            </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
-{% endfor %}

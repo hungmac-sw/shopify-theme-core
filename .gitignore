@@ -38,8 +38,11 @@ Thumbs.db
 
 # Compiled resources #
 ######################
-/src/assets/app.css
-/src/assets/app.js
+/src/assets/*.css
+/src/assets/*.js
+/src/assets/*.scss
+/src/assets/*.scss.liquid
+/src/assets/*.LICENSE.txt
 /src/config/
 
 # Custom #

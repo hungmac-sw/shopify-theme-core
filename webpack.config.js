@@ -1,31 +1,38 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MergeJsonWebpackPlugin = require('merge-jsons-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+
   entry: {
     app: path.join(__dirname, 'resources/app.js'),
   },
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: 'vendor.min.css',
+      chunkFilename: '[id].min.css',
     }),
     new MergeJsonWebpackPlugin({
       output: {
         groupBy: [
           {
-            pattern: './resources/config/settings_data.json',
-            fileName: '../config/settings_data.json',
-          },
-          {
-            pattern: './resources/config/settings_schema.json',
-            fileName: '../config/settings_schema.json',
+            pattern: './resources/config/settings_data.json', fileName: '../config/settings_data.json',
           },
         ],
       },
     }),
+    new CopyPlugin([
+      { from: './resources/config/settings_schema.json', to: '../config/settings_schema.json' },
+      { from: './resources/scss/*', to: '../assets/[name].scss', ignore: ['app.scss'] },
+      { from: './resources/scss/*', to: '../assets/[name].scss.liquid', ignore: ['app.scss'] },
+    ]),
   ],
 
   output: {
@@ -48,7 +55,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /app\.scss$/,
         exclude: /node_modules/,
         use: [
           {
@@ -63,6 +70,7 @@ module.exports = {
           'sass-loader',
         ],
       },
+
     ],
   },
 };

@@ -1,10 +1,16 @@
 # shopify-theme-core
 
-```npm run dev```
+Learn how to configuring theme settings
+```https://shopify.dev/tutorials/develop-theme-theme-editor-settings-schema#input-setting-types```
+
+Learn about Liquid
+```https://shopify.github.io/liquid/```
+
 For build js and css
+```npm run dev```
 
-```theme watch```
 Deploy files has changed
+```theme watch```
 
-```theme deploy```
 Deploy all files
+```theme deploy```

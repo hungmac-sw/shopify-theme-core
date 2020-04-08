@@ -1,0 +1,43 @@
+<div class="site-header{{ header_class }}" data-section-id="{{ section.id }}" data-section-type="header-section">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <a class="navbar-brand" href="#">{{ shop.name }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav mr-auto">
+        {% for link in linklists.main-menu.links %}
+          {% assign child_list_handle = link.title | handleize %}
+          {% if linklists[child_list_handle].links != blank %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle {% if link.active %} active{% endif %}" href="{{ link.url }}" id="dropdown{{ link.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ link.title }}</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown{{ link.id }}">
+                [{% for childlink in linklists[child_list_handle].links %}
+                  <a class="dropdown-item" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                {% endfor %}]
+              </div>
+            </li>
+          {% else %}
+            <a class="nav-link {% if link.active %} active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <form class="form-inline my-2 my-md-0">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </form>
+
+      <a href="/cart" class="btn btn-sm btn-primary">cart</a>
+
+      {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <a href="/account" class="btn btn-sm btn-primary">account</a>
+          {{ 'log out'  | customer_logout_link }}
+        {% else %}
+          {{ 'log in ' | customer_login_link }}
+          {{ 'register' | customer_register_link }}
+        {% endif %}
+      {% endif %}
+    </div>
+  </nav>
+</div>
