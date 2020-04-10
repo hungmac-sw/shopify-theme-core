@@ -9,8 +9,7 @@
     "core-js": "^3.6.4",
     "cssnano": "^4.1.10",
     "merge-jsons-webpack-plugin": "^1.0.21",
-    "postcss-discard-comments": "^4.0.2",
-    "style-loader": "^1.1.3"
+    "postcss-discard-comments": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -22,6 +21,9 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "husky": "^4.2.5",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.9.0",
@@ -30,17 +32,27 @@
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
     "purgecss": "^2.1.0",
+    "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "stylelint": "^13.3.1",
+    "stylelint-config-standard": "^20.0.0",
     "terser-webpack-plugin": "^2.3.5",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "scripts": {
+    "stylelint": "stylelint 'resources/module/**/*.scss'; exit 0 & stylelint 'resources/scss/**/*.scss'; exit 0",
     "dev": "cross-env NODE_ENV=development webpack --mode development --progress --hide-modules --config=webpack.config.js",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch --progress --hide-modules --config=webpack.config.js",
     "prod": "cross-env NODE_ENV=production webpack --mode production --no-progress --hide-modules --config=webpack.config.js",
     "production": "npm prod",
     "lint": "node_modules/.bin/eslint resources"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run stylelint"
+    }
   },
   "author": "halosell",
   "license": "ISC"

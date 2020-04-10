@@ -1,0 +1,39 @@
+/* ================ Color Variables ================ */
+
+// Text colors
+$color-text: #3d4246;
+$color-text-shadow: rgba(0, 0, 0, 0.4);
+$color-body-text: #69727b;
+$color-sale-text: #557b97;
+$color-small-button-text-border: #3d4246;
+$color-text-field: #fff;
+$color-text-field-text: #000;
+$color-navigation-text: #3d4246;
+
+// Button colors
+$color-btn-primary: #557b97;
+$color-btn-primary-text: #fff;
+
+// Hover and focus states
+$color-text-focus: adaptivecolor(#3d4246, 64.96);
+$color-overlay-text-focus: adaptivecolor(#fff, 255);
+$color-btn-primary-focus: adaptivecolor(#557b97, 114.83);
+$color-btn-social-focus: adaptivecolor(#e8e9eb, 232.93);
+$color-small-button-text-border-focus: adaptivecolor(#3d4246, 64.96);
+$predictive-search-focus: adaptivebackgroundcolor(#fff, 255);
+
+// Link buttons and secondary cta
+$color-link: $color-body-text;
+$opacity-link-hover: 0.6;
+
+// Transitions
+$transition-duration-fast: 100ms;
+$transition-duration: 250ms;
+$transition-duration-slow: 400ms;
+$transition-link-hover: $transition-duration-fast cubic-bezier(0.44, 0.13, 0.48, 0.87);
+
+// Backgrounds
+$color-body: #fff;
+$color-bg: #fff;
+$color-drawer-background: rgba(0, 0, 0, 0.6);
+$color-bg-alt: rgba(105, 114, 123, 0.05);

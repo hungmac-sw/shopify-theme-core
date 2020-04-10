@@ -11,7 +11,7 @@ module.exports = {
   },
 
   entry: {
-    app: path.join(__dirname, 'resources/app.js'),
+    app: path.join(__dirname, 'resources/app/app.js'),
   },
 
   plugins: [
@@ -30,8 +30,11 @@ module.exports = {
     }),
     new CopyPlugin([
       { from: './resources/config/settings_schema.json', to: '../config/settings_schema.json' },
-      { from: './resources/scss/*', to: '../assets/[name].scss', ignore: ['app.scss'] },
-      { from: './resources/scss/*', to: '../assets/[name].scss.liquid', ignore: ['app.scss'] },
+      { from: './resources/module/layout/**/*.liquid', to: '../layout/[name].[ext]' },
+      { from: './resources/module/sections/**/*.liquid', to: '../sections/[name].[ext]' },
+      { from: './resources/module/snippets/**/*.liquid', to: '../snippets/[name].[ext]' },
+      { from: './resources/module/templates/*/*.liquid', to: '../templates/[name].[ext]' },
+      { from: './resources/module/templates/customers/*/*.liquid', to: '../templates/customers/[name].[ext]' },
     ]),
   ],
 
@@ -43,7 +46,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /app\.js$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -70,7 +73,6 @@ module.exports = {
           'sass-loader',
         ],
       },
-
     ],
   },
 };

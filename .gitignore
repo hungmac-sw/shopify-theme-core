@@ -44,6 +44,10 @@ Thumbs.db
 /src/assets/*.scss.liquid
 /src/assets/*.LICENSE.txt
 /src/config/
+/src/layout/
+/src/sections/
+/src/snippets/
+/src/templates/
 
 # Custom #
 ######################
