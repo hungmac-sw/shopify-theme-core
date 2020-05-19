@@ -1,0 +1,17 @@
+<div class="hs-product-item col-auto">
+  <form action="/cart/add" method="POST">
+    <div class="hs-product-item product__{{ product.id }}">
+      <div class="hs-product-image-wrapper">
+        <div class="aspect__ratio aspect__ratio-75 aspect__ratio-crop">
+          <a href="{{ product.url | within: collection }}">
+            <div class="hs-product-image aspect__ratio-image lazyload" data-bgset="{% include 'lazysize-bgset', image: product.featured_image %}" data-sizes="auto" style="background-image:url({{ 'transparent.png.jpg' | asset_url }});"></div>
+            {%- if product.images.size > 1 -%}
+              <div class="aspect__ratio-image hs-product-image hs-product-image-second lazypreload" data-bgset="{% include 'lazysize-bgset', image: product.images[1] %}" data-sizes="auto"  style="background-image:url({{ 'transparent.png.jpg' | asset_url }});"></div>
+            {%- endif -%}
+            <span>test</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

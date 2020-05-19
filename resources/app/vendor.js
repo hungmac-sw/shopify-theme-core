@@ -1,5 +1,5 @@
 // Require CSS file
-import './app.scss';
+import './vendor.scss';
 
 // Require components
 import 'bootstrap';

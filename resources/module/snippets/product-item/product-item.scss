@@ -1,0 +1,16 @@
+/* ================ Product item ================ */
+.hs-product-item {
+  &:hover {
+    .hs-product-image-second {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  .hs-product-image-second {
+    z-index: 1;
+    opacity: 0;
+    //@include transition(opacity 0.5s ease,transform 2s cubic-bezier(0,0,.44,1.18));
+    transition: opacity 0.5s ease,transform 2s cubic-bezier(0, 0, 0.44, 1.18);
+  }
+}

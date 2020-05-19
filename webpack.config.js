@@ -11,7 +11,8 @@ module.exports = {
   },
 
   entry: {
-    app: path.join(__dirname, 'resources/app/app.js'),
+    app: path.join(__dirname, 'resources/app/vendor.js'),
+    lazysizes: path.join(__dirname, 'resources/app/lazysizes.js'),
   },
 
   plugins: [
@@ -46,7 +47,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /app\.js$/,
+        test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -58,7 +59,7 @@ module.exports = {
         },
       },
       {
-        test: /app\.scss$/,
+        test: /vendor\.scss$/,
         exclude: /node_modules/,
         use: [
           {
